@@ -1,58 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="registration.css">
-    <title>Registration</title>
-    <script type="text/javascript" defer src="reg.js"></script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="registration.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <script type="text/javascript" defer src="cart.js"></script>
+  <script type="text/javascript" defer src="script.js"></script>
+  <script type="text/javascript" defer src="reg.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const regForm = document.getElementById('form');
+      if (regForm) {
+        regForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          // Simulate registration -> login
+          alert('Account created successfully! Please sign in.');
+          window.location.href = 'login.html';
+        });
+      }
+    });
+  </script>
 </head>
+
 <body>
+  <div class="container">
+    <div class="left-side">
+      <p>welcome to our<br />website</p>
+    </div>
 
-        <div class="container">
-            <div class="left-side">
-               <p>welcome to our<br>website</p>
-            </div>
-            
-            <div class="content-side">
-                <div class="login-heading">
-                    <img src="Images/agzone-logo.png" alt="AgZone" title="AgZone">
-                </div>
+    <div class="content-side">
+      <!-- Cart Icon with Badge -->
+      <div style="position: absolute; top: 80px; right: 30px; z-index: 1001;">
+        <img src="Images/Cart.png" alt="Cart" id="cartIcon" style="width: 40px; height: 40px; cursor: pointer;"
+          title="View Cart" />
+        <span id="cartCountBadge"
+          style="position: absolute; top: -5px; right: -5px; background: #e74c3c; color: #fff; border-radius: 50%; padding: 2px 6px; font-size: 12px; font-weight: bold; display: none;">0</span>
+      </div>
+      <!-- Cart Section (hidden by default) -->
+      <div id="cartSection"
+        style="display: none; position: absolute; right: 30px; top: 130px; background: #fff; border: 1px solid #ccc; box-shadow: 0 2px 8px rgba(0,0,0,0.2); padding: 16px; min-width: 250px; z-index: 1002;">
+        <h3>Your Cart</h3>
+        <ul id="cartItems" style="list-style: none; padding: 0; margin: 0 0 10px 0;"></ul>
+        <button id="closeCart"
+          style="background: #e74c3c; color: #fff; border: none; padding: 6px 12px; cursor: pointer;">Close</button>
+      </div>
+      <script>
+        // Cart logic is now handled by cart.js
+      </script>
+      <div class="login-heading">
+        <img src="logo.png" alt="GreenCart" title="GreenCart" />
+      </div>
 
-                   <div class="sub-heading">
-                    <p>Create Your Free Account</p>
-                   </div>
-                   <div id="error"></div>
-                   <div class="form">
-                    <form action="registration.php" method="post" id="form" >
-                        
-                        <label for="fname">Username</label><br>
-                        <input type="text" id="UserName" name="UserName" class="fname" placeholder="Sample852#" required><br>
+      <div class="sub-heading">
+        <p>Create Your Free Account</p>
+      </div>
+      <div id="error"></div>
+      <div class="form">
+        <form action="/registration" method="post" id="form">
+          <label for="fname">Username</label><br />
+          <input type="text" id="UserName" name="UserName" class="fname" placeholder="Sample852#" required /><br />
 
-                        <label for="email">Email</label><br>
-                        <input type="email" id="Email"name="Email" class="email" placeholder="Example@email.com" required><br>
+          <label for="email">Email</label><br />
+          <input type="email" id="Email" name="Email" class="email" placeholder="Example@email.com" required /><br />
 
-                        <label for="phoneno">MobileNo</label><br>
-                        <input type="tel" id="MobileNo" name="MobileNo" class="phoneno" placeholder="07########" required><br>
+          <label for="phoneno">MobileNo</label><br />
+          <input type="tel" id="MobileNo" name="MobileNo" class="phoneno" placeholder="07########" required /><br />
 
-                        <label for="password">New Password</label><br>
-                        <input type="password" id="Npassword" name="Npassword" class="password" placeholder="Enter Password" required><br>
+          <label for="password">New Password</label><br />
+          <input type="password" id="Npassword" name="Npassword" class="password" placeholder="Enter Password"
+            required /><br />
 
-                        <label for="cpassword">Confirm Password</label><br>
-                        <input type="password" id="Cpassword" name="Cpassword" class="cpassword" placeholder="Confirm Password" required><br>
-                        
-                        <input type="submit" id="submit" name="submit" value="Create your account">
-                    
-                        
-                    </form>
-                   </div>
+          <label for="cpassword">Confirm Password</label><br />
+          <input type="password" id="Cpassword" name="Cpassword" class="cpassword" placeholder="Confirm Password"
+            required /><br />
 
-                   <div class="sign-in-option">
-                  <p>Already have an account? <a href="login.html">Sign in</a></p>
-                   </div>
-            </div>
+          <input type="submit" id="submit" name="submit" value="Create your account" />
+        </form>
+      </div>
+
+      <div class="sign-in-option">
+        <p>Already have an account? <a href="login.html">Sign in</a></p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-col branding">
+        <img src="logo.png" alt="GreenCart" class="footer-logo">
+        <p>Empowering farmers with modern technology, sustainable practices, and direct access to markets.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+          <a href="#"><i class="fa fa-linkedin"></i></a>
         </div>
-    
+      </div>
+      <div class="footer-col links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="f1.html">Crops</a></li>
+          <li><a href="rent_machine.html">Machinery</a></li>
+          <li><a href="cultivation.html">Cultivation</a></li>
+          <li><a href="contactUs.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col contact">
+        <h4>Contact Info</h4>
+        <p><i class="fa fa-map-marker"></i> 123 Green Lane, Agri City</p>
+        <p><i class="fa fa-phone"></i> +1 234 567 890</p>
+        <p><i class="fa fa-envelope"></i> contact@greencart.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 GreenCart. All Rights Reserved.</p>
+    </div>
+  </footer>
 </body>
+
 </html>

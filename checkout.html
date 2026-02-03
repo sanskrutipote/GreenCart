@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | GreenCart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <style>
+    :root {
+      --primary: #27ae60;
+      --primary-dark: #219150;
+      --accent: #ffd814;
+      --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      --glass-bg: rgba(255, 255, 255, 0.85);
+      --glass-border: rgba(255, 255, 255, 0.3);
+      --text-main: #2c3e50;
+      --text-muted: #7f8c8d;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-gradient);
+      min-height: 100vh;
+      color: var(--text-main);
+      padding: 40px 20px;
+    }
+
+    .checkout-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Progress Tracker */
+    .progress-tracker {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .progress-tracker::before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: #ddd;
+      z-index: 1;
+    }
+
+    .step {
+      position: relative;
+      z-index: 2;
+      background: #f5f7fa;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      border: 2px solid #ddd;
+      color: #999;
+      transition: all 0.3s ease;
+    }
+
+    .step.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+      box-shadow: 0 0 15px rgba(39, 174, 96, 0.4);
+    }
+
+    .step-label {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      white-space: nowrap;
+      color: var(--text-muted);
+    }
+
+    .step.active+.step-label {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .checkout-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .checkout-title i {
+      color: var(--primary);
+      margin-right: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      padding-bottom: 10px;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .section-title i {
+      margin-right: 10px;
+      opacity: 0.7;
+    }
+
+    .checkout-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+
+    .checkout-item:hover {
+      background: rgba(255, 255, 255, 0.8);
+      transform: scale(1.02);
+    }
+
+    .checkout-item img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-right: 16px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .checkout-item-details {
+      flex: 1;
+    }
+
+    .checkout-item-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .checkout-item-price {
+      color: var(--primary);
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    .checkout-item-qty {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.6);
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .address-box {
+      margin-bottom: 24px;
+    }
+
+    .address-text {
+      padding: 15px;
+      background: #fff;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-top: 10px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 2px dashed #ddd;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 18px;
+      font-size: 1.2rem;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      margin-top: 30px;
+      transition: all 0.3s;
+      box-shadow: 0 6px 20px rgba(39, 174, 96, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .checkout-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4);
+    }
+
+    .checkout-btn:active {
+      transform: translateY(0);
+    }
+
+    .checkout-btn i {
+      margin-right: 10px;
+    }
+
+    .back-btn {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 20px;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      color: var(--primary);
+    }
+
+    .back-btn i {
+      margin-right: 5px;
+    }
+
+    /* Empty state */
+    #emptyState {
+      text-align: center;
+      padding: 40px;
+      display: none;
+    }
+
+    #emptyState i {
+      font-size: 4rem;
+      color: #ddd;
+      margin-bottom: 20px;
+    }
+
+    .change-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 10px;
+      display: inline-block;
+    }
+
+    .change-link:hover {
+      text-decoration: underline;
+    }
+
+    #loadingOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      flex-direction: column;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loadingOverlay">
+    <div class="spinner"></div>
+    <p style="margin-top:15px; font-weight:600;">Processing Order...</p>
+  </div>
+
+  <div class="checkout-container">
+    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Shopping</a>
+
+    <div class="progress-tracker">
+      <div class="step active">1 <span class="step-label">Cart</span></div>
+      <div class="step active">2 <span class="step-label">Checkout</span></div>
+      <div class="step">3 <span class="step-label">Success</span></div>
+    </div>
+
+    <div id="checkoutContent">
+      <div class="header-flex">
+        <div class="checkout-title"><i class="fas fa-shield-alt"></i> Secure Checkout</div>
+      </div>
+
+      <div class="grid">
+        <div class="summary-section">
+          <h2 class="section-title"><i class="fas fa-shopping-basket"></i> Order Summary</h2>
+          <div id="checkoutSummary"></div>
+        </div>
+
+        <div class="details-section">
+          <h2 class="section-title"><i class="fas fa-map-marker-alt"></i> Shipping Details</h2>
+          <div class="card address-box">
+            <strong>Deliver to:</strong>
+            <div class="address-text" id="checkoutAddress">
+              <span style="display:block; font-weight:600;">Sample User</span>
+              123, Main Street, Green Valley,<br>
+              Agricultural Zone, City - 123456
+            </div>
+            <a href="javascript:void(0)" class="change-link" onclick="changeAddress()">Change Address</a>
+          </div>
+
+          <h2 class="section-title"><i class="fas fa-receipt"></i> Payment Details</h2>
+          <div class="card">
+            <div class="price-row">
+              <span>Subtotal</span>
+              <span id="subtotalVal">₹0</span>
+            </div>
+            <div class="price-row">
+              <span>Shipping</span>
+              <span style="color:#27ae60; font-weight:600;">FREE</span>
+            </div>
+            <div class="price-row">
+              <span>Tax (GST)</span>
+              <span>₹0</span>
+            </div>
+            <div class="total-row">
+              <span>Total</span>
+              <span id="checkoutTotal">₹0</span>
+            </div>
+          </div>
+
+          <button class="checkout-btn" onclick="placeOrder()">
+            <i class="fas fa-lock"></i> Place Your Order
+          </button>
+          <p style="font-size:11px; color:#999; text-align:center; margin-top:10px;">
+            By placing your order, you agree to GreenCart's terms and conditions.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="emptyState">
+      <i class="fas fa-shopping-cart"></i>
+      <h2>Your cart is empty</h2>
+      <p style="color:#666; margin: 15px 0 25px;">Looks like you haven't added anything to your cart yet.</p>
+      <a href="index.html" class="checkout-btn" style="display:inline-flex; width:auto; text-decoration:none;">Go
+        Shopping</a>
+    </div>
+  </div>
+
+  <script>
+    function getCart() {
+      return JSON.parse(localStorage.getItem('cart') || '[]');
+    }
+
+    function renderCheckout() {
+      var cart = getCart();
+      var summary = document.getElementById('checkoutSummary');
+      var total = document.getElementById('checkoutTotal');
+      var subtotalVal = document.getElementById('subtotalVal');
+      var content = document.getElementById('checkoutContent');
+      var emptyState = document.getElementById('emptyState');
+
+      summary.innerHTML = '';
+      let subtotal = 0;
+
+      if (cart.length === 0) {
+        content.style.display = 'none';
+        emptyState.style.display = 'block';
+        return;
+      }
+
+      cart.forEach(function (item) {
+        subtotal += item.price * item.qty;
+        var div = document.createElement('div');
+        div.className = 'checkout-item';
+        div.innerHTML = `
+          <img src="${item.img}" alt="${item.name}">
+          <div class="checkout-item-details">
+            <div class="checkout-item-name">${item.name}</div>
+            <div class="checkout-item-qty">Quantity: ${item.qty}</div>
+            <div class="checkout-item-price">₹${(item.price * item.qty).toLocaleString()}</div>
+          </div>
+        `;
+        summary.appendChild(div);
+      });
+
+      total.textContent = `₹${subtotal.toLocaleString()}`;
+      subtotalVal.textContent = `₹${subtotal.toLocaleString()}`;
+    }
+
+    function placeOrder() {
+      var cart = getCart();
+      if (cart.length === 0) return;
+
+      document.getElementById('loadingOverlay').style.display = 'flex';
+
+      var cartData = cart.map(item => `${item.name}:${item.qty}`).join(',');
+      var address = document.getElementById('checkoutAddress').innerText;
+      var total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+      var formData = new URLSearchParams();
+      formData.append('cart', cartData);
+      formData.append('address', address);
+      formData.append('total', total);
+
+      // Simulate backend latency for a premium feel or use real API
+      setTimeout(() => {
+        fetch('/order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: formData.toString()
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.success) {
+              localStorage.removeItem('cart');
+              // Trigger a smooth transition or move to success page
+              window.location.href = 'success.html';
+            } else {
+              alert('Error: ' + (data.message || 'Failed to place order.'));
+              document.getElementById('loadingOverlay').style.display = 'none';
+            }
+          })
+          .catch(err => {
+            // Local fallback for demo purposes if backend isn't running
+            console.log('Backend not reachable, but proceeding for demo success.');
+            localStorage.removeItem('cart');
+            window.location.href = 'success.html';
+          });
+      }, 1500);
+    }
+
+    function changeAddress() {
+      const newAddress = prompt("Enter your new delivery address:", document.getElementById('checkoutAddress').innerText);
+      if (newAddress) {
+        document.getElementById('checkoutAddress').innerHTML = `<span style="display:block; font-weight:600;">Custom Address</span>` + newAddress.replace(/\n/g, '<br>');
+      }
+    }
+
+    renderCheckout();
+  </script>
+</body>
+
+</html>

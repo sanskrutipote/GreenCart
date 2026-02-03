@@ -1,404 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script> 
-    <script defer src="search_bar.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>AgZone-Home</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <script defer src="cart.js"></script>
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <title>GreenCart</title>
 </head>
+
 <body>
-   
- 
-<div class="home">
+  <div class="home">
     <div class="nav-bar">
-        <div class="left-side">
-            <div class="logo">
-                <img src="Images/agzone-logo.png" alt="AgZone-Logo" title="AgZone">
-            </div>
+      <div class="left-side">
+        <div class="logo">
+          <img src="logo.png" alt="GreenCart-Logo" title="GreenCart" />
         </div>
+      </div>
 
-        <div class="right-side">
+      <div class="right-side">
+        <ul id="nav-links">
+          <li>
+            <a href="index.html"><i class="fa fa-fw fa-home"></i>Home</a>
+          </li>
+          <li>
+            <a href="f1.html"><i class="fa fa-leaf" aria-hidden="true"></i>Crops</a>
+          </li>
+          <li>
+            <a href="rent_machine.html"><i class="fa fa-bus" aria-hidden="true"></i>Rent machinery</a>
+          </li>
+          <li>
+            <a href="cultivation.html"><i class="fa fa-asl-interpreting"></i>Cultivation &amp;
+              Protection</a>
+          </li>
+          <li>
+            <a href="contactUs.html"><i class="fa fa-fw fa-envelope"></i>Contact Us</a>
+          </li>
+        </ul>
+      </div>
 
-            <ul id="nav-links">
-                <li ><a href="index.html"><i class="fa fa-fw fa-home"></i>Home</a></li>
-                <li><a href="fertilizers.html"><i class="fa fa-leaf" aria-hidden="true"></i>Crops</a>
-                <li><a href="rent_machine.html"><i class="fa fa-bus" aria-hidden="true"></i>Rent machinery</a></li>
-                <li><a href="cultivation.html"><i class="fa fa-asl-interpreting"></i>Cultivation &amp; Protection</a></li>
-                <li><a href="contactUs.html"><i class="fa fa-fw fa-envelope"></i>Contact Us</a></li>
-            </ul>
+      <a href="login.html"><button id="login"><i class="fa fa-fw fa-user"></i>Login</button></a>
 
-            
-      
-        </div>
-     
-       
-        <a href="login.html"><button id="login"><i class="fa fa-fw fa-user"></i>Login</button></a>
+      <!-- Cart Icon with Badge -->
+      <div style="position: absolute; top: 80px; right: 30px; z-index: 1001;">
+        <img src="Images/Cart.png" alt="Cart" id="cartIcon" style="width: 40px; height: 40px; cursor: pointer;"
+          title="View Cart" />
+        <span id="cartCountBadge"
+          style="position: absolute; top: -5px; right: -5px; background: #e74c3c; color: #fff; border-radius: 50%; padding: 2px 6px; font-size: 12px; font-weight: bold; display: none;">0</span>
+      </div>
 
-        
-        <button class="right-bar">
-            <span class="bar"></span>
-        </button>
-       
+      <!-- Cart Section (hidden by default) -->
+      <div id="cartSection"
+        style="display: none; position: absolute; right: 30px; top: 130px; background: #fff; border: 1px solid #ccc; box-shadow: 0 2px 8px rgba(0,0,0,0.2); padding: 16px; min-width: 350px; z-index: 1002;">
+        <h3 style="margin-top:0;">Shopping Cart</h3>
+        <ul id="cartItems"
+          style="list-style: none; padding: 0; margin: 0 0 10px 0; max-height: 250px; overflow-y: auto;"></ul>
+        <div id="cartSubtotal" style="font-weight:bold; margin-bottom:10px;"></div>
+        <button id="closeCart"
+          style="background: #e74c3c; color: #fff; border: none; padding: 6px 12px; cursor: pointer;">Close</button>
+      </div>
+
+      <button class="right-bar">
+        <span class="bar"></span>
+      </button>
     </div>
 
-    
-    
-
     <div class="mobile_nav">
-        
-        <ul id="mobile_nav_links">
-            <li ><a href="index.html"><i class="fa fa-fw fa-home"></i>Home</a></li>
-                    <li><a href="fertilizers.html"><i class="fa fa-leaf" aria-hidden="true"></i>Crops</a>
-                    <li><a href="rent_machine.html"><i class="fa fa-bus" aria-hidden="true"></i>Rent machinery</a></li>
-                    <li><a href="cultivation.html"><i class="fa fa-asl-interpreting"></i>Cultivation &amp; Protection</a></li>
-                    <li><a href="contactUs.html"><i class="fa fa-fw fa-envelope"></i>Contact Us</a></li>
-        </ul>
-        <a href="login.html"><button id="mobile_login"><i class="fa fa-fw fa-user"></i>Login</button></a>
-        <div class="mobile_footer">
-           <p>Copyright&copy; 2022 AgZone. All Rights Reserved</p>
-        </div>
+      <ul id="mobile_nav_links">
+        <li>
+          <a href="index.html"><i class="fa fa-fw fa-home"></i>Home</a>
+        </li>
+        <li>
+          <a href="f1.html"><i class="fa fa-leaf" aria-hidden="true"></i>Crops</a>
+        </li>
+        <li>
+          <a href="rent_machine.html"><i class="fa fa-bus" aria-hidden="true"></i>Rent machinery</a>
+        </li>
+        <li>
+          <a href="cultivation.html"><i class="fa fa-asl-interpreting"></i>Cultivation &amp;
+            Protection</a>
+        </li>
+        <li>
+          <a href="contactUs.html"><i class="fa fa-fw fa-envelope"></i>Contact Us</a>
+        </li>
+      </ul>
+      <a href="login.html"><button id="mobile_login">
+          <i class="fa fa-fw fa-user"></i>Login
+        </button></a>
+      <div class="mobile_footer">
+        <p>Copyright&copy;</p>
+      </div>
     </div>
 
     <div class="hero-image">
-        <video autoplay muted loop>
-            <source src="Video/Banner Video.mp4" type="video/mp4">
-        </video>
-       
+      <video autoplay muted loop>
+        <source src="Video/Banner Video.mp4" type="video/mp4" />
+      </video>
     </div>
+  </div>
 
-
-
-
-
-
-   
-
-    <div class="search_bar">
-        <div class="search_img">
-            <img src="Images/Search_img.png" alt="search_image">
-        </div>
-        
-        <input type="text" placeholder="Quick Search" id="quick_search">
-    </div>
-  
-
-</div>
-
-
-
-
-
-
-
-
-
-
-<div class="sub-home">
+  <div class="sub-home">
     <div class="looking-for">
-        
-        <div class="card">
-            <div class="img">
-                <img src="Images/machine-1.jpeg">
-            </div>
-            <div class="description">
-                <p>looking to buy a machine? <span>&nbsp;&rarr;</span></p>
-            </div>
+      <div class="card">
+        <div class="img">
+          <img src="Images/crops-image.png" />
         </div>
-        <div class="card">
-            <div class="img">
-                <img src="Images/machine-2.jpeg">
-            </div>
-            
-            <div class="description">
-                <p>looking to rent a machine?<span>&nbsp; &rarr;</span></p>
-            </div>
+        <div class="description">
+          <p>Buy crops</p>
         </div>
-    
-        <div class="card">
-            <div class="img">
-                <img src="Images/machine-3.jpeg">
-            </div>
-            <div class="description">
-                <p>looking to sell a machine?<span id="arrow">&nbsp; &rarr;</span></p>
-            </div>
+      </div>
+      <div class="card">
+        <div class="img">
+          <img src="Images/machine-1.png" />
         </div>
-        
-    
-        <div class="card">
-            <div class="img">
-                <img src="Images/crops-image.jpeg">
-            </div>
-            <div class="description">
-                <p>looking for information?<span>&nbsp; &rarr;</span></p>
-            </div>
-            
+
+        <div class="description">
+          <p>Sell crops</p>
         </div>
-        
-        
+      </div>
+
+      <div class="card">
+        <div class="img">
+          <img src="Images/machine-2.png" />
+        </div>
+        <div class="description">
+          <p>
+            Buy / rent / sell machine
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="img">
+          <img src="Images/machine-3.png" />
+        </div>
+        <div class="description">
+          <p>Crop / machine info</p>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 
+  <div class="sub-hero-image" id="sub-hero-image"></div>
 
-    <div class="sub-hero-image" id="sub-hero-image">
+  <div class="about-agzone">
+    <div class="about">
+      <div class="image">
+        <p id="inc">About GreenCart, Inc.</p>
+        <img src="./Images/about-agzone.jpeg" />
+      </div>
+      <div class="about-para">
+        <p>
+          <span>GreenCart</span> is a comprehensive agricultural platform designed to empower farmers and connect
+          agricultural communities. We provide a seamless marketplace where farmers can buy and sell crops, rent farming
+          machinery, and access expert cultivation guidance. Our platform bridges the gap between farmers and
+          agricultural resources, making it easier to access quality equipment, find the best crop prices, and share
+          knowledge. With a commitment to supporting sustainable farming practices, we help farmers across the country
+          maximize their productivity and profitability. Join our growing community of farmers and agricultural
+          enthusiasts working together to strengthen India's agricultural sector.
+        </p>
+      </div>
+    </div>
+  </div>
 
+  <section class="services">
+    <div class="heading">
+      <p>Our Services</p>
+    </div>
+    <div class="service-image"></div>
+
+    <div class="cards">
+      <div class="actual-card">
+        <div class="card-image">
+          <img src="./Images/buy (2).png" />
+        </div>
+        <div class="content">
+          <div class="head"></div>
+
+          <p id="para">
+            Discover top-quality farming equipment to boost your agricultural
+            productivity and efficiency.
+          </p>
+          <!-- <p id="more">Learn More</p> -->
+        </div>
+      </div>
+      <div class="actual-card">
+        <div class="card-image">
+          <img src="./Images/sell (2).png" />
+        </div>
+        <div class="content">
+          <div class="head"></div>
+
+          <p id="para">
+            Sell your farming equipment with ease and reach a wide audience of
+            potential buyers.
+          </p>
+          <!-- <p id="more">Learn More</p> -->
+        </div>
+      </div>
+      <div class="actual-card">
+        <div class="card-image">
+          <img src="./Images/rent (2).png" />
+        </div>
+        <div class="content">
+          <div class="head"></div>
+
+          <p id="para">
+            Rent top-quality farming equipment to meet your seasonal needs
+            without a large upfront investment.
+          </p>
+          <!-- <p id="more">Learn More</p> -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="our-partners">
+      <h3>-- Our Partners</h3>
+      <div class="partners-sub-heading">
+        <h1>We Partner With Highly Professionals</h1>
+      </div>
+      <div class="partners">
+        <div class="img1" id="partners-img">
+          <img src="./Images/Nestle-Logo.png" />
+        </div>
+        <div class="img2" id="partners-img">
+          <img src="./Images/Department-LOGO.png" />
+        </div>
+        <div class="img3" id="partners-img">
+          <img src="./Images/prima-ceylon.jpg" />
+        </div>
+        <div class="img4" id="partners-img">
+          <img src="./Images/ruhunu_logo.png" />
+        </div>
+      </div>
+    </section> -->
+
+  <!-- <section class="recent-updates">
+      <h1>Check out our recent news and updates</h1>
+      <div class="recent-pics">
+        <div class="recent-img1">
+          <img src="./Images/recent-img1.jpg" />
+          <div class="flex">
+            <div class="date">
+              <span id="date">20</span><span id="year">January 2026</span>
+            </div>
+            <div class="img-description">
+              <p>
+                Discover GreenCart's latest range of high-performance
+                tractors, designed to enhance your farming efficiency.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="recent-img2">
+          <img src="./Images/recent-img2.jpg" />
+          <div class="flex">
+            <div class="date">
+              <span id="date">22</span><span id="year">March 2026</span>
+            </div>
+            <div class="img-description">
+              <p>
+                From hardy cows to versatile animals, find the perfect additions
+                to your agricultural venture at GreenCart.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="recent-img3">
+          <img src="./Images/recent-img3.jpg" />
+          <div class="flex">
+            <div class="date">
+              <span id="date">15</span><span id="year">May 2026</span>
+            </div>
+            <div class="img-description">
+              <p>
+                At GreenCart, you can now discover top-quality livestock
+                tailored to elevate your farming operation's efficiency and
+                success.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="what-they-say"> -->
+  <h1>What Our Customer says about us</h1>
+  <div class="div">
+    <div class="what-they-say-image">
+      <img src="./Images//what-they-img.png" />
     </div>
 
-
-    <div class="about-agzone">
-        
-        <div class="about">
-            
-            <div class="image">
-                <p id="inc">About AgZone, Inc.</p>
-                <img src="./Images/about-agzone.jpeg">
-               
-            </div>
-            <div class="about-para">
-                <p>
-                    At <span>AgZone</span>, based in Kandy,
-                     we offer expert advice with a wide variety of specialist products.
-                      We are fortunate to be able to offer our clients
-                       the opportunity to test drive machines
-                        at our farm which allows you to make a fully informed choice.
-                        We have great people all over the country working towards
-                         producing the world’s finest products, and we’re always on the lookout for great talent.
-                </p>
-            </div>
-            
+    <div class="reviews">
+      <div class="review active">
+        <p>
+          "GreenCart's rental system is a blessing for farmers like me.
+          It's affordable, and the equipment is always in top condition.
+          Highly recommended!"
+        </p>
+        <div class="img-review">
+          <div class="user-profile1"></div>
+          <h3>Harsha Suryanarayana</h3>
         </div>
+        <div class="review-rating">
+          <div class="star-div">&#9733;</div>
+          <div class="star-div">&#9733;</div>
+          <div class="star-div">&#9733;</div>
+          <div class="star-div">&#9733;</div>
+          <div class="star-div-none">&#9734;</div>
+          <span id="review1-rating">4/5</span>
+        </div>
+      </div>
+      <div class="review">
+        <p>
+          "GreenCart makes renting farm equipment a breeze. Their website
+          is easy to navigate, and the process is straightforward. Great
+          service!"
+        </p>
+        <div class="img-review">
+          <div class="user-profile2"></div>
+          <h3>Akshay Miterani</h3>
+        </div>
+        <div class="review-rating">
+          <div class="star-div">&#9733;</div>
+          <div class="star-div">&#9733;</div>
+          <div class="star-div">&#9733;</div>
+          <div class="star-div-none">&#9734;</div>
+          <div class="star-div-none">&#9734;</div>
+          <span id="review1-rating">3/5</span>
+        </div>
+      </div>
+      <div class="review">
+        <p>
+          "As a small farmer, GreenCart has been a lifesaver. Their rental
+          system allows me to access quality equipment without draining my
+          budget. Thank you!"
+        </p>
+        <div class="img-review">
+          <div class="user-profile3"></div>
+          <h3>Rushabh Mehta</h3>
+        </div>
+        <div class="review-rating">
+          <div class="star-div">&#9733;</div>
+          <div class="star-div">&#9733;</div>
+          <div class="star-div">&#9733;</div>
+          <div class="star-div">&#9733;</div>
+          <div class="star-div-none">&#9734;</div>
+          <span id="review1-rating">4/5</span>
+        </div>
+      </div>
+      <div class="review">
+        <p>
+          "GreenCart has transformed farming in our community. Their
+          rental system has made it easier for everyone to access
+          high-quality equipment. A must-have for farmers!"
+        </p>
+        <div class="img-review">
+          <div class="user-profile4"></div>
+          <h3>Srivatsan Srinivasan</h3>
+        </div>
+        <div class="review-rating">
+          <div class="star-div">&#9733;</div>
+          <div class="star-div">&#9733;</div>
+          <div class="star-div">&#9733;</div>
+          <div class="star-div">&#9733;</div>
+          <div class="star-div">&#9733;</div>
+          <span id="review1-rating">5/5</span>
+        </div>
+      </div>
+      <div class="review">
+        <p>
+          "GreenCart has transformed farming in our community. Their
+          rental system has made it easier for everyone to access
+          high-quality equipment. A must-have for farmers!"
+        </p>
+        <div class="img-review">
+          <div class="user-profile5"></div>
+          <h3>Anurag Acharya</h3>
+        </div>
+        <div class="review-rating">
+          <div class="star-div">&#9733;</div>
+          <div class="star-div">&#9733;</div>
+          <div class="star-div">&#9733;</div>
+          <div class="star-div">&#9733;</div>
+          <div class="star-div-none">&#9734;</div>
+          <span id="review1-rating">4/5</span>
+        </div>
+      </div>
     </div>
+  </div>
+  </section>
 
-
-    <section class="services">
-        <div class="heading">
-            <p>Our Services</p>
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-col branding">
+        <img src="logo.png" alt="GreenCart" class="footer-logo">
+        <p>Empowering farmers with modern technology, sustainable practices, and direct access to markets.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+          <a href="#"><i class="fa fa-linkedin"></i></a>
         </div>
-        <div class="service-image">
-          
-        </div>
-
-
-        <div class="cards">
-            <div class="actual-card">
-                <div class="card-image">
-                    <img src="./Images/buy (2).png">
-                </div>
-                <div class="content">
-                    <div class="head">
-                      
-                    </div>
-                    
-                    <p id="para">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, voluptates vel,non eius possimus?</p>
-                    <p id="more">Learn More</p>
-                </div>
-            </div>
-            <div class="actual-card">
-                <div class="card-image">
-                    <img src="./Images/sell (2).png">
-                </div>
-                <div class="content">
-                    <div class="head">
-                      
-                    </div>
-                    
-                    <p id="para">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, voluptates vel,non eius possimus?</p>
-                    <p id="more">Learn More</p>
-                </div>
-            </div>
-            <div class="actual-card">
-                <div class="card-image">
-                    <img src="./Images/rent (2).png">
-                </div>
-                <div class="content">
-                    <div class="head">
-                        
-                    </div>
-                    
-                    <p id="para">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, voluptates vel,non eius possimus?</p>
-                    <p id="more">Learn More</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-
-    <section class="our-partners">
-        <h3>-- Our Partners</h3>
-        <div class="partners-sub-heading">
-            <h1>We Partner With Highly Professionals</h1>
-        </div>
-        <div class="partners">
-            <div class="img1" id="partners-img">
-                <img src="./Images/Nestle-Logo.png">
-            </div>
-            <div class="img2" id="partners-img">
-                <img src="./Images/Department-LOGO.png">
-            </div>
-            <div class="img3" id="partners-img">
-                <img src="./Images/prima-ceylon.jpg">
-            </div>
-            <div class="img4" id="partners-img">
-                <img src="./Images/ruhunu_logo.png">
-            </div>
-        </div>
-    </section>
-
-
-
-    <section class="recent-updates">
-        <h1>Check out our recent news and updates</h1>
-        <div class="recent-pics">
-            <div class="recent-img1">
-                <img src="./Images/recent-img1.jpg">
-                <div class="flex">
-                <div class="date"><span id="date">30</span><span id="year">December 2022</span></div>
-                <div class="img-description">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis risus vitae lacus pulvinar suscipit.</p>
-                </div>
-            </div>
-            </div>
-            <div class="recent-img2">
-                <img src="./Images/recent-img2.jpg">
-                <div class="flex">
-                <div class="date"><span id="date">5</span><span id="year">October 2022</span></div>
-                <div class="img-description">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis risus vitae lacus pulvinar suscipit.</p>
-                </div>
-            </div>
-            </div>
-            <div class="recent-img3">
-                <img src="./Images/recent-img3.jpg">
-                <div class="flex">
-                <div class="date"><span id="date">18</span><span id="year">September 2022</span></div>
-                <div class="img-description">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis risus vitae lacus pulvinar suscipit.</p>
-                </div>
-            </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <section class="what-they-say">
-        <h1>What Our Customer says about us</h1>
-        <div class="div">
-        <div class="what-they-say-image">
-            <img src="./Images//what-they-img.png">
-        </div>
-
-        <div class="reviews">
-            
-            <div class="review active">
-                <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero corrupti,!"</p>
-                <div class="img-review">
-                <div class="user-profile1">
-                   
-                </div>
-                <h3>Hizbullah Razik</h3>
-            </div>
-                <div class="review-rating">
-                    <div class="star-div">&#9733;</div>
-                    <div class="star-div">&#9733;</div>
-                    <div class="star-div">&#9733;</div>
-                    <div class="star-div">&#9733;</div>
-                    <div class="star-div-none">&#9734;</div>
-                      <span id="review1-rating">4/5</span>
-                </div>
-            </div>
-            <div class="review">
-                <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero corrupti,!"</p>
-                <div class="img-review">
-                    <div class="user-profile2">
-                       
-                    </div>
-                    <h3>Janrthan Manojkumar</h3>
-                </div>
-                <div class="review-rating">
-                    <div class="star-div">&#9733;</div>
-                    <div class="star-div">&#9733;</div>
-                    <div class="star-div">&#9733;</div>
-                    <div class="star-div-none">&#9734;</div>
-                    <div class="star-div-none">&#9734;</div>
-                     <span id="review1-rating">3/5</span>
-                </div>
-            </div>
-            <div class="review">
-                <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero corrupti,!"</p> 
-                <div class="img-review">
-                    <div class="user-profile3">
-                       
-                    </div>
-                    <h3>Meshith Ariyanawansa</h3>
-                </div>
-                <div class="review-rating">
-                    <div class="star-div">&#9733;</div>
-                    <div class="star-div">&#9733;</div>
-                    <div class="star-div">&#9733;</div>
-                    <div class="star-div">&#9733;</div>
-                    <div class="star-div-none">&#9734;</div>
-                    <span id="review1-rating">4/5</span>
-                </div>
-            </div>
-            <div class="review">
-                <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero corrupti,!"</p>
-                <div class="img-review">
-                    <div class="user-profile4">
-                       
-                    </div>
-                    <h3>Jayasinghe</h3>
-                </div>
-                <div class="review-rating">
-                    <div class="star-div">&#9733;</div>
-                    <div class="star-div">&#9733;</div>
-                    <div class="star-div">&#9733;</div>
-                    <div class="star-div">&#9733;</div>
-                    <div class="star-div">&#9733;</div>
-                    <span id="review1-rating">5/5</span>
-
-                </div>
-            </div>
-            <div class="review">
-                <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                     Facere placeat laudantium facilis ullam iure numquam quidem
-                      amet doloremque, maiores, ad modi veritatis ea aliquam nisi pariatur,
-                       architecto voluptas omnis labore."</p>
-                <div class="img-review">
-                    <div class="user-profile5">
-                       
-                    </div>
-                    <h3>Alex Lee</h3>
-                </div>
-                <div class="review-rating">
-                     <div class="star-div">&#9733;</div>
-                    <div class="star-div">&#9733;</div>
-                    <div class="star-div">&#9733;</div>
-                    <div class="star-div">&#9733;</div>
-                    <div class="star-div-none">&#9734;</div>
-                    <span id="review1-rating">4/5</span>
-                </div>
-            </div>
-        </div>
+      </div>
+      <div class="footer-col links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="f1.html">Crops</a></li>
+          <li><a href="rent_machine.html">Machinery</a></li>
+          <li><a href="cultivation.html">Cultivation</a></li>
+          <li><a href="contactUs.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col contact">
+        <h4>Contact Info</h4>
+        <p><i class="fa fa-map-marker"></i> 123 Green Lane, Agri City</p>
+        <p><i class="fa fa-phone"></i> +1 234 567 890</p>
+        <p><i class="fa fa-envelope"></i> contact@greencart.com</p>
+      </div>
     </div>
-    </section>
-
-
-    <section class="footer">
-        <div class="left-side-footer">
-            <p>&copy;2022 All Rights Reserved.AgZone.</p>
-        </div>
-        <div class="right-side-footer">
-            <p>Web Design and Development by<a href="index.html">AgZone Team</a></p>
-        </div>
-    </section>
-
-
-   
+    <div class="footer-bottom">
+      <p>&copy; 2026 GreenCart. All Rights Reserved.</p>
+    </div>
+  </footer>
+  <script>
+    // Cart logic is now handled by cart.js
+  </script>
 </body>
+
 </html>

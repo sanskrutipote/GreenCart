@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="rent_machine.css" />
+  <link rel="stylesheet" href="shared.css" />
+  <script defer src="cart.js"></script>
+  <script defer src="script.js"></script>
+  <script defer src="add_post.js"></script>
+  <title>Rent Machine</title>
+</head>
+
+<body>
+  <section class="header">
+    <div class="nav-bar">
+      <div class="left-side">
+        <div class="logo">
+          <img src="logo.png" alt="GreenCart-logo" title="GreenCart" />
+        </div>
+      </div>
+
+      <div class="right-side">
+        <ul id="nav-links">
+          <li>
+            <a href="index.html"><i class="fa fa-fw fa-home"></i>Home</a>
+          </li>
+          <li>
+            <a href="f1.html"><i class="fa fa-leaf" aria-hidden="true"></i>Crops</a>
+          </li>
+          <li>
+            <a href="rent_machine.html"><i class="fa fa-bus" aria-hidden="true"></i>Rent machinery</a>
+          </li>
+          <li>
+            <a href="cultivation.html"><i class="fa fa-asl-interpreting"></i>Cultivation &amp;
+              Protection</a>
+          </li>
+          <li>
+            <a href="contactUs.html"><i class="fa fa-fw fa-envelope"></i>Contact Us</a>
+          </li>
+        </ul>
+      </div>
+
+      <a href="login.html"><button id="login"><i class="fa fa-fw fa-user"></i>Login</button></a>
+
+      <button class="right-bar">
+        <span class="bar"></span>
+      </button>
+
+      <!-- Cart Icon with Badge -->
+      <div style="position: absolute; top: 80px; right: 30px; z-index: 1001;">
+        <img src="Images/Cart.png" alt="Cart" id="cartIcon" style="width: 40px; height: 40px; cursor: pointer;"
+          title="View Cart" />
+        <span id="cartCountBadge"
+          style="position: absolute; top: -5px; right: -5px; background: #e74c3c; color: #fff; border-radius: 50%; padding: 2px 6px; font-size: 12px; font-weight: bold; display: none;">0</span>
+      </div>
+
+      <!-- Cart Section (hidden by default) -->
+      <div id="cartSection"
+        style="display: none; position: absolute; right: 30px; top: 130px; background: #fff; border: 1px solid #ccc; box-shadow: 0 2px 8px rgba(0,0,0,0.2); padding: 16px; min-width: 250px; z-index: 1002;">
+        <h3>Your Cart</h3>
+        <ul id="cartItems" style="list-style: none; padding: 0; margin: 0 0 10px 0;"></ul>
+        <button id="closeCart"
+          style="background: #e74c3c; color: #fff; border: none; padding: 6px 12px; cursor: pointer;">Close</button>
+      </div>
+
+      <div class="mobile_nav">
+        <ul id="mobile_nav_links">
+          <li>
+            <a href="index.html"><i class="fa fa-fw fa-home"></i>Home</a>
+          </li>
+          <li>
+            <a href="f1.html"><i class="fa fa-leaf" aria-hidden="true"></i>Crops</a>
+          </li>
+          <li>
+            <a href="rent_machine.html"><i class="fa fa-bus" aria-hidden="true"></i>Rent machinery</a>
+          </li>
+          <li>
+            <a href="cultivation.html"><i class="fa fa-asl-interpreting"></i>Cultivation &amp;
+              Protection</a>
+          </li>
+          <li>
+            <a href="contactUs.html"><i class="fa fa-fw fa-envelope"></i>Contact Us</a>
+          </li>
+        </ul>
+        <a href="login.html"><button id="mobile_login">
+            <i class="fa fa-fw fa-user"></i>Login
+          </button></a>
+        <div class="mobile_footer">
+          <p>Copyright&copy; 2026 GreenCart. All Rights Reserved</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    // Cart logic is now handled by cart.js
+  </script>
+
+  <div class="hero-image">
+    <div class="rent-a-machine-text">
+      <h1>Want to Rent a Machine?</h1>
+    </div>
+  </div>
+
+  <!-- <section class="Add-Post">
+      <button class="post_btn">Add Post</button>
+    </section> -->
+
+  <!--Products-->
+  <section class="rent-box">
+    <!--Garden Tractor-->
+    <div class="boxes">
+      <div class="hero_img">
+        <img src="./Images/garden-tractor.jpg" />
+      </div>
+      <div class="machine-name">
+        <p>Garden Tractor</p>
+      </div>
+      <div class="price">
+        <p>$1,50000</p>
+
+        <div class="star1">☆</div>
+        <div class="star1">☆</div>
+        <div class="star1">☆</div>
+        <div class="star1">☆</div>
+        <div class="star1">☆</div>
+      </div>
+      <div class="rent">
+        <button>Contact</button>
+      </div>
+    </div>
+
+    <!--excavator-->
+    <div class="boxes">
+      <div class="hero_img">
+        <img src="./Images/excavator.jpg" />
+      </div>
+      <div class="machine-name">
+        <p>Excavator</p>
+      </div>
+      <div class="price">
+        <p>$5,74000</p>
+        <div class="star2">☆</div>
+        <div class="star2">☆</div>
+        <div class="star2">☆</div>
+        <div class="star2">☆</div>
+        <div class="star2">☆</div>
+      </div>
+      <div class="rent">
+        <button>Contact</button>
+      </div>
+    </div>
+
+    <!--Mover-->
+    <div class="boxes">
+      <div class="hero_img">
+        <img src="./Images/mover.jpg" />
+      </div>
+      <div class="machine-name">
+        <p>Mover</p>
+      </div>
+      <div class="price">
+        <p>$2,46000</p>
+        <div class="star3">☆</div>
+        <div class="star3">☆</div>
+        <div class="star3">☆</div>
+        <div class="star3">☆</div>
+        <div class="star3">☆</div>
+      </div>
+      <div class="rent">
+        <button>Contact</button>
+      </div>
+    </div>
+
+    <!--Dumb Truck-->
+    <div class="boxes">
+      <div class="hero_img">
+        <img src="./Images/dumb truck.jpg" />
+      </div>
+      <div class="machine-name">
+        <p>Dumb Truck</p>
+      </div>
+      <div class="price">
+        <p>$8,22390</p>
+        <div class="star4">☆</div>
+        <div class="star4">☆</div>
+        <div class="star4">☆</div>
+        <div class="star4">☆</div>
+        <div class="star4">☆</div>
+      </div>
+      <div class="rent">
+        <button>Contact</button>
+      </div>
+    </div>
+
+    <!--Cement Mixer-->
+    <div class="boxes">
+      <div class="hero_img">
+        <img src="./Images/cement-mixer.jpg" />
+      </div>
+      <div class="machine-name">
+        <p>Cement Mixer</p>
+      </div>
+      <div class="price">
+        <p>$2,52000</p>
+        <div class="star5">☆</div>
+        <div class="star5">☆</div>
+        <div class="star5">☆</div>
+        <div class="star5">☆</div>
+        <div class="star5">☆</div>
+      </div>
+      <div class="rent">
+        <button>Contact</button>
+      </div>
+    </div>
+
+    <!--Fork Lift-->
+    <div class="boxes">
+      <div class="hero_img">
+        <img src="./Images/fork-lift.jpg" />
+      </div>
+      <div class="machine-name">
+        <p>Fork Lift</p>
+      </div>
+      <div class="price">
+        <p>$1,63000</p>
+        <div class="star6">☆</div>
+        <div class="star6">☆</div>
+        <div class="star6">☆</div>
+        <div class="star6">☆</div>
+        <div class="star6">☆</div>
+      </div>
+      <div class="rent">
+        <button>Contact</button>
+      </div>
+    </div>
+
+    <!--Earth Moving truck-->
+    <div class="boxes">
+      <div class="hero_img">
+        <img src="./Images/earth-moving-truck.jpg" />
+      </div>
+      <div class="machine-name">
+        <p>Earth Moving</p>
+      </div>
+      <div class="price">
+        <p>$7,21000</p>
+        <div class="star7">☆</div>
+        <div class="star7">☆</div>
+        <div class="star7">☆</div>
+        <div class="star7">☆</div>
+        <div class="star7">☆</div>
+      </div>
+      <div class="rent">
+        <button>Contact</button>
+      </div>
+    </div>
+
+    <!--Utility Tractor-->
+    <div class="boxes">
+      <div class="hero_img">
+        <img src="./Images/utility-tractor.jpg" />
+      </div>
+      <div class="machine-name">
+        <p>utility Tractor</p>
+      </div>
+      <div class="price">
+        <p>$3,12000</p>
+        <div class="star8">☆</div>
+        <div class="star8">☆</div>
+        <div class="star8">☆</div>
+        <div class="star8">☆</div>
+        <div class="star8">☆</div>
+      </div>
+      <div class="rent">
+        <button>Contact</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-col branding">
+        <img src="logo.png" alt="GreenCart" class="footer-logo">
+        <p>Empowering farmers with modern technology, sustainable practices, and direct access to markets.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+          <a href="#"><i class="fa fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="footer-col links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="f1.html">Crops</a></li>
+          <li><a href="rent_machine.html">Machinery</a></li>
+          <li><a href="cultivation.html">Cultivation</a></li>
+          <li><a href="contactUs.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col contact">
+        <h4>Contact Info</h4>
+        <p><i class="fa fa-map-marker"></i> 123 Green Lane, Agri City</p>
+        <p><i class="fa fa-phone"></i> +1 234 567 890</p>
+        <p><i class="fa fa-envelope"></i> contact@greencart.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 GreenCart. All Rights Reserved.</p>
+    </div>
+  </footer>
+</body>
+
+</html>

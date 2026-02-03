@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="contactUs.css">
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="cart.js"></script>
+    <script defer src="script.js"></script>
+    <title>Contact Us - GreenCart</title>
+</head>
+
+<body>
+    <div class="contactUs">
+        <div class="nav-bar">
+            <div class="left-side">
+                <div class="logo">
+                    <img src="logo.png" alt="GreenCart-Logo" title="GreenCart">
+                </div>
+            </div>
+
+            <div class="right-side">
+                <ul id="nav-links">
+                    <li><a href="index.html"><i class="fa fa-fw fa-home"></i>Home</a></li>
+                    <li><a href="f1.html"><i class="fa fa-leaf" aria-hidden="true"></i>Crops</a></li>
+                    <li><a href="rent_machine.html"><i class="fa fa-bus" aria-hidden="true"></i>Rent machinery</a></li>
+                    <li><a href="cultivation.html"><i class="fa fa-asl-interpreting"></i>Cultivation &amp;
+                            Protection</a></li>
+                    <li><a href="contactUs.html"><i class="fa fa-fw fa-envelope"></i>Contact Us</a></li>
+                </ul>
+            </div>
+
+            <a href="login.html"><button id="login"><i class="fa fa-fw fa-user"></i>Login</button></a>
+
+            <button class="right-bar">
+                <span class="bar"></span>
+            </button>
+
+            <!-- Cart Icon with Badge -->
+            <div style="position: absolute; top: 80px; right: 30px; z-index: 1001;">
+                <img src="Images/Cart.png" alt="Cart" id="cartIcon" style="width: 40px; height: 40px; cursor: pointer;"
+                    title="View Cart" />
+                <span id="cartCountBadge"
+                    style="position: absolute; top: -5px; right: -5px; background: #e74c3c; color: #fff; border-radius: 50%; padding: 2px 6px; font-size: 12px; font-weight: bold; display: none;">0</span>
+            </div>
+
+            <!-- Cart Section (hidden by default) -->
+            <div id="cartSection"
+                style="display: none; position: absolute; right: 30px; top: 130px; background: #fff; border: 1px solid #ccc; box-shadow: 0 2px 8px rgba(0,0,0,0.2); padding: 16px; min-width: 250px; z-index: 1002;">
+                <h3>Your Cart</h3>
+                <ul id="cartItems" style="list-style: none; padding: 0; margin: 0 0 10px 0;"></ul>
+                <button id="closeCart"
+                    style="background: #e74c3c; color: #fff; border: none; padding: 6px 12px; cursor: pointer;">Close</button>
+            </div>
+        </div>
+
+        <div class="mobile_nav">
+            <ul id="mobile_nav_links">
+                <li><a href="index.html"><i class="fa fa-fw fa-home"></i>Home</a></li>
+                <li><a href="f1.html"><i class="fa fa-leaf" aria-hidden="true"></i>Crops</a></li>
+                <li><a href="rent_machine.html"><i class="fa fa-bus" aria-hidden="true"></i>Rent machinery</a></li>
+                <li><a href="cultivation.html"><i class="fa fa-asl-interpreting"></i>Cultivation &amp; Protection</a>
+                </li>
+                <li><a href="contactUs.html"><i class="fa fa-fw fa-envelope"></i>Contact Us</a></li>
+            </ul>
+            <a href="login.html"><button id="mobile_login"><i class="fa fa-fw fa-user"></i>Login</button></a>
+            <div class="mobile_footer">
+                <p>Copyright&copy; 2026 GreenCart. All Rights Reserved</p>
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1>Get In Touch</h1>
+                <p>We're here to help! Choose how you'd like to contact us.</p>
+            </div>
+        </div>
+
+        <!-- Main Contact Section -->
+        <div class="main-contact-section">
+            <div class="container">
+                <!-- Tabs Navigation -->
+                <div class="tabs-container">
+                    <div class="tabs-nav">
+                        <button class="tab-btn active" data-tab="general">
+                            <i class="fa fa-question-circle"></i>
+                            <span>General Inquiry</span>
+                        </button>
+                        <button class="tab-btn" data-tab="support">
+                            <i class="fa fa-life-ring"></i>
+                            <span>Technical Support</span>
+                        </button>
+                        <button class="tab-btn" data-tab="partnership">
+                            <i class="fa fa-handshake-o"></i>
+                            <span>Partnership</span>
+                        </button>
+                        <button class="tab-btn" data-tab="feedback">
+                            <i class="fa fa-commenting"></i>
+                            <span>Feedback</span>
+                        </button>
+                    </div>
+
+                    <!-- Tab Contents -->
+                    <div class="tabs-content">
+                        <!-- General Inquiry Tab -->
+                        <div class="tab-content active" id="general">
+                            <div class="form-wrapper">
+                                <h2>General Inquiry</h2>
+                                <p class="tab-description">Have a question? We'd love to hear from you. Send us a
+                                    message and we'll respond as soon as possible.</p>
+                                <form action="/saveContact" method="post" class="contact-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="name-general">Full Name <span>*</span></label>
+                                            <input type="text" id="name-general" name="name"
+                                                placeholder="Enter your full name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email-general">Email Address <span>*</span></label>
+                                            <input type="email" id="email-general" name="email"
+                                                placeholder="example@email.com" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="phone-general">Phone Number <span>*</span></label>
+                                            <input type="tel" id="phone-general" name="phone"
+                                                placeholder="+91 98765 43210" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="subject-general">Subject <span>*</span></label>
+                                            <select id="subject-general" name="subject" required>
+                                                <option value="">Select a subject</option>
+                                                <option value="General Question">General Question</option>
+                                                <option value="About Products">About Products</option>
+                                                <option value="Account Help">Account Help</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-general">Message <span>*</span></label>
+                                        <textarea id="message-general" name="message" rows="6"
+                                            placeholder="Tell us how we can help you..." required></textarea>
+                                    </div>
+                                    <button type="submit" class="submit-btn">
+                                        <i class="fa fa-paper-plane"></i> Send Message
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Technical Support Tab -->
+                        <div class="tab-content" id="support">
+                            <div class="form-wrapper">
+                                <h2>Technical Support</h2>
+                                <p class="tab-description">Experiencing technical issues? Our support team is ready to
+                                    assist you with any technical problems.</p>
+                                <form action="/saveContact" method="post" class="contact-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="name-support">Full Name <span>*</span></label>
+                                            <input type="text" id="name-support" name="name"
+                                                placeholder="Enter your full name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email-support">Email Address <span>*</span></label>
+                                            <input type="email" id="email-support" name="email"
+                                                placeholder="example@email.com" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="phone-support">Phone Number <span>*</span></label>
+                                            <input type="tel" id="phone-support" name="phone"
+                                                placeholder="+91 98765 43210" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="issue-type">Issue Type <span>*</span></label>
+                                            <select id="issue-type" name="subject" required>
+                                                <option value="">Select issue type</option>
+                                                <option value="Website Issue">Website Issue</option>
+                                                <option value="Login Problem">Login Problem</option>
+                                                <option value="Payment Issue">Payment Issue</option>
+                                                <option value="Product Issue">Product Issue</option>
+                                                <option value="Other Technical">Other Technical Issue</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-support">Describe Your Issue <span>*</span></label>
+                                        <textarea id="message-support" name="message" rows="6"
+                                            placeholder="Please describe the technical issue you're experiencing in detail..."
+                                            required></textarea>
+                                    </div>
+                                    <button type="submit" class="submit-btn">
+                                        <i class="fa fa-paper-plane"></i> Submit Support Request
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Partnership Tab -->
+                        <div class="tab-content" id="partnership">
+                            <div class="form-wrapper">
+                                <h2>Partnership Inquiry</h2>
+                                <p class="tab-description">Interested in partnering with us? Let's explore opportunities
+                                    to work together and grow together.</p>
+                                <form action="/saveContact" method="post" class="contact-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="name-partnership">Full Name <span>*</span></label>
+                                            <input type="text" id="name-partnership" name="name"
+                                                placeholder="Enter your full name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email-partnership">Email Address <span>*</span></label>
+                                            <input type="email" id="email-partnership" name="email"
+                                                placeholder="example@email.com" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="phone-partnership">Phone Number <span>*</span></label>
+                                            <input type="tel" id="phone-partnership" name="phone"
+                                                placeholder="+91 98765 43210" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company">Company/Organization</label>
+                                            <input type="text" id="company" name="company"
+                                                placeholder="Your company name">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="partnership-type">Partnership Type <span>*</span></label>
+                                            <select id="partnership-type" name="subject" required>
+                                                <option value="">Select partnership type</option>
+                                                <option value="Business Partnership">Business Partnership</option>
+                                                <option value="Supplier Partnership">Supplier Partnership</option>
+                                                <option value="Distribution Partnership">Distribution Partnership
+                                                </option>
+                                                <option value="Technology Partnership">Technology Partnership</option>
+                                                <option value="Other Partnership">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-partnership">Tell Us About Your Proposal
+                                            <span>*</span></label>
+                                        <textarea id="message-partnership" name="message" rows="6"
+                                            placeholder="Please describe your partnership proposal..."
+                                            required></textarea>
+                                    </div>
+                                    <button type="submit" class="submit-btn">
+                                        <i class="fa fa-paper-plane"></i> Send Partnership Inquiry
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Feedback Tab -->
+                        <div class="tab-content" id="feedback">
+                            <div class="form-wrapper">
+                                <h2>Share Your Feedback</h2>
+                                <p class="tab-description">Your feedback helps us improve. We value your opinions and
+                                    suggestions.</p>
+                                <form action="/saveContact" method="post" class="contact-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="name-feedback">Full Name <span>*</span></label>
+                                            <input type="text" id="name-feedback" name="name"
+                                                placeholder="Enter your full name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email-feedback">Email Address <span>*</span></label>
+                                            <input type="email" id="email-feedback" name="email"
+                                                placeholder="example@email.com" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="feedback-type">Feedback Type <span>*</span></label>
+                                            <select id="feedback-type" name="subject" required>
+                                                <option value="">Select feedback type</option>
+                                                <option value="Suggestion">Suggestion</option>
+                                                <option value="Complaint">Complaint</option>
+                                                <option value="Compliment">Compliment</option>
+                                                <option value="Review">Review</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="rating">Rating</label>
+                                            <select id="rating" name="rating">
+                                                <option value="">Select rating</option>
+                                                <option value="5">5 - Excellent</option>
+                                                <option value="4">4 - Very Good</option>
+                                                <option value="3">3 - Good</option>
+                                                <option value="2">2 - Fair</option>
+                                                <option value="1">1 - Poor</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-feedback">Your Feedback <span>*</span></label>
+                                        <textarea id="message-feedback" name="message" rows="6"
+                                            placeholder="Please share your thoughts, suggestions, or concerns..."
+                                            required></textarea>
+                                    </div>
+                                    <button type="submit" class="submit-btn">
+                                        <i class="fa fa-paper-plane"></i> Submit Feedback
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Information Cards -->
+                <div class="contact-info-section">
+                    <h2>Other Ways to Reach Us</h2>
+                    <div class="info-cards">
+                        <div class="info-card">
+                            <div class="card-icon">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <h3>Phone</h3>
+                            <p>+91 98765 43210</p>
+                            <p>+91 98765 43211</p>
+                        </div>
+                        <div class="info-card">
+                            <div class="card-icon">
+                                <i class="fa fa-envelope"></i>
+                            </div>
+                            <h3>Email</h3>
+                            <p>info@greencart.com</p>
+                            <p>support@greencart.com</p>
+                        </div>
+                        <div class="info-card">
+                            <div class="card-icon">
+                                <i class="fa fa-map-marker"></i>
+                            </div>
+                            <h3>Address</h3>
+                            <p>123 Agriculture Street</p>
+                            <p>Farm City, FC 12345</p>
+                        </div>
+                        <div class="info-card">
+                            <div class="card-icon">
+                                <i class="fa fa-clock-o"></i>
+                            </div>
+                            <h3>Office Hours</h3>
+                            <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                            <p>Sat: 10:00 AM - 4:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="social-section">
+                        <h3>Follow Us</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="social-link"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fa fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col branding">
+                <img src="logo.png" alt="GreenCart" class="footer-logo">
+                <p>Empowering farmers with modern technology, sustainable practices, and direct access to markets.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-col links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="f1.html">Crops</a></li>
+                    <li><a href="rent_machine.html">Machinery</a></li>
+                    <li><a href="cultivation.html">Cultivation</a></li>
+                    <li><a href="contactUs.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col contact">
+                <h4>Contact Info</h4>
+                <p><i class="fa fa-map-marker"></i> 123 Green Lane, Agri City</p>
+                <p><i class="fa fa-phone"></i> +1 234 567 890</p>
+                <p><i class="fa fa-envelope"></i> contact@greencart.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 GreenCart. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Cart logic is now handled by cart.js
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const targetTab = btn.getAttribute('data-tab');
+
+                    // Remove active class from all buttons and contents
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+
+                    // Add active class to clicked button and corresponding content
+                    btn.classList.add('active');
+                    document.getElementById(targetTab).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
