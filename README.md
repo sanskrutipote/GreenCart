@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Agriculture Website (GreenCart) - Full Working Project
 
 A complete agriculture marketplace website connecting farmers and agricultural businesses. Built with Java Servlets backend and HTML/CSS/JavaScript frontend.
@@ -144,7 +144,7 @@ Agriculture Website/
 │   └── main/
 │       ├── java/
 │       │   └── com/
-│       │       └── agzone/
+│       │       └── greencart/
 │       │           ├── controller/      # Servlets (API endpoints)
 │       │           ├── model/           # Data models
 │       │           └── util/            # Utilities (DB connection)
