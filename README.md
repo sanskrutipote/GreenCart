@@ -467,4 +467,3 @@ The platform is built with a clean and user-friendly interface to ensure ease of
 ## 📄 License
 
 This project is developed for academic purposes.
->>>>>>> ff038d53f97164af8a0c04b7de6c8a905aec28d0
