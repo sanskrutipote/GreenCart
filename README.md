@@ -1,5 +1,3 @@
-# GreenCart
-An agricultural marketplace for buying/selling crops, renting machinery, and accessing cultivation guidance
 # 🌱 GreenCart – Smart Agricultural Marketplace
 
 GreenCart is a comprehensive agricultural platform designed to empower farmers and connect agricultural communities. The platform enables users to buy and sell crops, rent farming machinery, and access reliable cultivation and protection information through a single digital solution.
@@ -77,10 +75,12 @@ The platform is built with a clean and user-friendly interface to ensure ease of
 > Screenshots included showcase:
 - Home page with core feature cards (Buy Crops, Sell Crops, Machinery Services)
 - About GreenCart section explaining platform vision
+<img width="1041" height="469" alt="image" src="https://github.com/user-attachments/assets/0e603603-1630-4238-82bd-e0e14782f3f0" />
+<img width="1897" height="826" alt="image" src="https://github.com/user-attachments/assets/4ec47e11-c631-4200-a9c2-7fba876de955" />
 
 ---
 
-## 🚀 Future Scope (Mention only if asked)
+## 🚀 Future Scope 
 
 - Online payment integration
 - Real-time crop price updates
@@ -92,8 +92,6 @@ The platform is built with a clean and user-friendly interface to ensure ease of
 ## 👩‍💻 Developed By
 
 **Sanskruti**  
-Final Year Engineering Project  
-Artificial Intelligence & Data Science
 
 ---
 
