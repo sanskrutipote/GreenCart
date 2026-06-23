@@ -460,7 +460,8 @@ The platform is built with a clean and user-friendly interface to ensure ease of
 
 ## 👩‍💻 Developed By
 
-**Sanskruti**  Shreya mall
+**Sanskruti**  
+**Shreya mall**
 
 ---
 
